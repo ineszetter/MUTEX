@@ -1,0 +1,57 @@
+/*/
+UNIVERSIDAD GUADALAJARA LAMAR
+16/03/2014
+Ma. Inés Calderón Zetter
+Ingeniería en Computación, 7°
+Sistemas Operativos Avanzados
+Programa: Atributos de los Hilos
+/*/
+
+
+#include <stdio.h>
+#include <pthread.h>
+
+
+void *thread(void *vargp)
+{
+ pthread_exit((void*)1);
+}
+
+void *thread2(void *vargp)
+{
+ pthread_exit((void*)2);
+}
+
+void *thread3(void *vargp)
+{
+ pthread_exit((void*)3);
+}
+
+void *thread4(void *vargp)
+{
+ pthread_exit((void*)4);
+}
+
+int main()
+{
+		
+ int i;
+ pthread_t tid, tid2, tid3, tid4;
+ pthread_create(&tid, NULL, thread, NULL);
+ pthread_create(&tid2, NULL, thread2, NULL);
+ pthread_create(&tid3, NULL, thread3, NULL);
+ pthread_create(&tid4, NULL, thread4, NULL);
+
+ printf("Thread No.: %d Thread ID.: %u\n",i,(unsigned int)pthread_self());
+ pthread_join(tid, (void **)&i);
+
+ printf("Thread No.: %d Thread ID.: %u\n",i,(unsigned int)pthread_self());
+ pthread_join(tid2, (void **)&i);
+
+ printf("Thread No.: %d Thread ID.: %u\n",i,(unsigned int)pthread_self());
+ pthread_join(tid3, (void **)&i);
+
+ printf("Thread No.: %d Thread ID.: %u\n",i,(unsigned int)pthread_self());
+ pthread_join(tid4, (void **)&i);
+ 
+}
